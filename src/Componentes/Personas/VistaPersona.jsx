@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import Base from '../Base';
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import './stylePersonas.css'
+import './stylePersonas.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleLeft} from '@fortawesome/free-solid-svg-icons';
 import Imagenes from './Imagenes';
@@ -15,13 +15,7 @@ function VistaPersona(props) {
     const libros = useSelector((estado) => estado.libros)
     const dispatch = useDispatch();
     const lista = useSelector((state) => state.personas);
-    const [personas, setPersonas] = React.useState({});
-
-    React.useEffect(() => {
-        if (!lista || lista.length === 0) return;
-        setPersonas(lista.find((item) => item.id === params.id));
-
-    }, [params, lista]);
+    const personas = lista.find((unaPersona) => unaPersona.id == params.id);
 
     React.useEffect(async () => {
         try {
@@ -53,13 +47,16 @@ function VistaPersona(props) {
                             <li>Alias: {personas.alias}</li>
                             <li>Email: {personas.email}</li>
                             <li>Libros prestados:
-                                <ul>
-                                    {libros.map((item) =>
-                                        item.persona_id == personas.id ? (
-                                            <li>{item.nombre}</li>
-                                        ) : null
-                                    )}
-                                </ul>
+                                {libros.find((item) => item.persona_id == personas.id) ? (
+                                        <ul>
+                                            {libros.map((item) =>
+                                                item.persona_id == personas.id ? (
+                                                    <li>{item.nombre}</li>
+                                                ) : null
+                                            )}
+                                        </ul>
+                                    ) : " No tiene."
+                                }
                             </li>
                          </ul>
                     </td>
