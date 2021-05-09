@@ -1,0 +1,25 @@
+.imagen-libros{
+  width: 125px;
+}
+
+select{
+  padding-left: 10px;
+  width: 98%;
+  height: 35px;
+  border-radius: 5px;
+  margin-top: 5px;
+  border: 1px solid;
+}
+
+.btn-action{
+  font-weight: 700;
+  background-color:rgb(206, 203, 203);
+}
+
+.formulario3{
+  background-color:khaki;
+}
+
+.correccion{
+  display: flex;
+}
