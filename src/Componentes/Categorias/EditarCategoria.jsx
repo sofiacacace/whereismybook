@@ -29,7 +29,7 @@ function EditarCategoria(props) {
             history.push("/api/categorias");
 
         } catch (e) {
-            swal("Error!", "Faltan datos.", "error");
+            swal("Error!", "La categoría tiene libros asignados o faltan datos.", "error");
         }
     };
 
